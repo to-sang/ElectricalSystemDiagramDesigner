@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:MainApplication"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Common MainApplication Styles -->
+                <ResourceDictionary Source="Resources/ResourceDictionaries/Shared.xaml" />
+                <ResourceDictionary Source="Resources/ResourceDictionaries/ToolBar.xaml" />
+                <ResourceDictionary Source="Resources/ResourceDictionaries/ApplicationToolbar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

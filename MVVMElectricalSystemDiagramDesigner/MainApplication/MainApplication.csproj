@@ -12,6 +12,33 @@
 		<Optimize>False</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsBottom.png" />
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsCenteredHorizontal.png" />
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsCenteredVertical.png" />
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsLeft.png" />
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsRight.png" />
+	  <None Remove="Resources\Images\Toolbars\AlignObjectsTop.png" />
+	  <None Remove="Resources\Images\Toolbars\Copy.png" />
+	  <None Remove="Resources\Images\Toolbars\Cut.png" />
+	  <None Remove="Resources\Images\Toolbars\Delete.png" />
+	  <None Remove="Resources\Images\Toolbars\DistributeObjectsHorizontal.png" />
+	  <None Remove="Resources\Images\Toolbars\DistributeObjectsVertical.png" />
+	  <None Remove="Resources\Images\Toolbars\GenericDocument.png" />
+	  <None Remove="Resources\Images\Toolbars\Group.png" />
+	  <None Remove="Resources\Images\Toolbars\Import.png" />
+	  <None Remove="Resources\Images\Toolbars\OpenFolder.png" />
+	  <None Remove="Resources\Images\Toolbars\Paste.png" />
+	  <None Remove="Resources\Images\Toolbars\PasteBig.png" />
+	  <None Remove="Resources\Images\Toolbars\Redo.png" />
+	  <None Remove="Resources\Images\Toolbars\Save.png" />
+	  <None Remove="Resources\Images\Toolbars\SaveAs.png" />
+	  <None Remove="Resources\Images\Toolbars\Undo.png" />
+	  <None Remove="Resources\Images\Toolbars\Ungroup.png" />
+	  <None Remove="Resources\ResourceDictionaries\Group.png" />
+	  <None Remove="Resources\ResourceDictionaries\Redo.png" />
+	  <None Remove="Resources\ResourceDictionaries\Undo.png" />
+	</ItemGroup>
+	<ItemGroup>
 		<Reference Include="System" />
 		<Reference Include="System.Data" />
 		<Reference Include="System.Xml" />
@@ -29,7 +56,6 @@
 		<None Include="App.config" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Resources\" />
 		<Folder Include="UserControls\" />
 	</ItemGroup>
 	<ItemGroup>
@@ -37,5 +63,32 @@
 			<Project>{94ae59b0-35ee-4abb-98c2-26ff724a516b}</Project>
 			<Name>DiagramDesigner</Name>
 		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsBottom.png" />
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsCenteredHorizontal.png" />
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsCenteredVertical.png" />
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsLeft.png" />
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsRight.png" />
+	  <Resource Include="Resources\Images\Toolbars\AlignObjectsTop.png" />
+	  <Resource Include="Resources\Images\Toolbars\Copy.png" />
+	  <Resource Include="Resources\Images\Toolbars\Cut.png" />
+	  <Resource Include="Resources\Images\Toolbars\Delete.png" />
+	  <Resource Include="Resources\Images\Toolbars\DistributeObjectsHorizontal.png" />
+	  <Resource Include="Resources\Images\Toolbars\DistributeObjectsVertical.png" />
+	  <Resource Include="Resources\Images\Toolbars\GenericDocument.png" />
+	  <Resource Include="Resources\Images\Toolbars\Group.png" />
+	  <Resource Include="Resources\Images\Toolbars\Import.png" />
+	  <Resource Include="Resources\Images\Toolbars\OpenFolder.png" />
+	  <Resource Include="Resources\Images\Toolbars\Paste.png" />
+	  <Resource Include="Resources\Images\Toolbars\PasteBig.png" />
+	  <Resource Include="Resources\Images\Toolbars\Redo.png" />
+	  <Resource Include="Resources\Images\Toolbars\Save.png" />
+	  <Resource Include="Resources\Images\Toolbars\SaveAs.png" />
+	  <Resource Include="Resources\Images\Toolbars\Undo.png" />
+	  <Resource Include="Resources\Images\Toolbars\Ungroup.png" />
+	  <Resource Include="Resources\ResourceDictionaries\Group.png" />
+	  <Resource Include="Resources\ResourceDictionaries\Redo.png" />
+	  <Resource Include="Resources\ResourceDictionaries\Undo.png" />
 	</ItemGroup>
 </Project>
