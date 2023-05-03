@@ -3,10 +3,64 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:MainApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        d:DataContext="{d:DesignData Type=local:MainWindowViewModel}"
+        WindowState="Maximized"
+        SnapsToDevicePixels="True"
+        Title="{Binding MyTitle}"
+        Height="850"
+        Width="1100"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">7</system:Double>
+        <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">7</system:Double>
+        <ContextMenu x:Key="DiagramContextMenu">
+            <MenuItem Header="Copy"
+                      Command="{x:Static ApplicationCommands.Copy}"
+                      InputGestureText="Ctrl + C" />
+            <MenuItem Header="Cut"
+                      Command="{x:Static ApplicationCommands.Cut}"
+                      InputGestureText="Ctrl + X" />
+            <MenuItem Header="Paste"
+                      Command="{x:Static ApplicationCommands.Paste}"
+                      InputGestureText="Ctrl + V" />
+            <MenuItem Header="Alignment">
+                <MenuItem Header="Align Top"
+                          Command="{x:Static local:MainWindowViewModel.AlignTop}"
+                          InputGestureText="Ctrl + T" />
+                <MenuItem Header="Align Horizontal Center"
+                          Command="{x:Static local:MainWindowViewModel.AlignHorizontalCenters}"
+                          InputGestureText="Ctrl + E" />
+                <MenuItem Header="Align Bottom"
+                          Command="{x:Static local:MainWindowViewModel.AlignBottom}"
+                          InputGestureText="Ctrl + B" />
+                <MenuItem Header="Align Left"
+                          Command="{x:Static local:MainWindowViewModel.AlignLeft}"
+                          InputGestureText="Ctrl + L" />
+                <MenuItem Header="Align Vertical center"
+                          Command="{x:Static local:MainWindowViewModel.AlignVerticalCenters}"
+                          InputGestureText="Ctrl + M" />
+                <MenuItem Header="Align Right"
+                          Command="{x:Static local:MainWindowViewModel.AlignRight}"
+                          InputGestureText="Ctrl + R" />
+                <MenuItem Header="Distribute Horizontal"
+                          Command="{x:Static local:MainWindowViewModel.DistributeHorizontal}"
+                          InputGestureText="Ctrl + D" />
+                <MenuItem Header="Distribute Vertical"
+                          Command="{x:Static local:MainWindowViewModel.DistributeVertical}"
+                          InputGestureText="Ctrl + Shift + D" />
+            </MenuItem>
+            <MenuItem Header="Group / Ungroup"
+                      Command="{x:Static local:MainWindowViewModel.Group}"
+                      InputGestureText="Ctrl + G" />
+            <MenuItem Header="Import XML..."
+                      Command="{x:Static local:MainWindowViewModel.Import}"
+                      InputGestureText="Ctrl + I" />
+        </ContextMenu>
+    </Window.Resources>
     <Grid>
-        
+
     </Grid>
 </Window>

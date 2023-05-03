@@ -31,7 +31,6 @@
 	<ItemGroup>
 		<Folder Include="Resources\" />
 		<Folder Include="UserControls\" />
-		<Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj">
