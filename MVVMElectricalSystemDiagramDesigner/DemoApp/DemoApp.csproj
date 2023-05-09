@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<TargetFramework>net481</TargetFramework>
+		<Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+		<OutputType>WinExe</OutputType>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWPF>true</UseWPF>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="bin\**" />
+		<Content Remove="bin\**" />
+		<EmbeddedResource Remove="bin\**" />
+		<None Remove="bin\**" />
+		<Page Remove="bin\**" />
+		<Reference Include="PresentationFramework.Aero" />
+		<AppDesigner Include="Properties\" />
+		<WCFMetadata Include="Service References\" />
+		<ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj" />
+		<Resource Include="Images\Devices\*" />
+		<Resource Include="Images\Toolbars\*" />
+		<None Remove="Images\Devices\EarthSwitch.png" />
+		<None Remove="Images\Devices\EarthSwitch_Default.png" />
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Images\Other\arrow-down.png" />
+	  <Resource Include="Images\Other\arrow-left.png" />
+	  <Resource Include="Images\Other\arrow-right.png" />
+	  <Resource Include="Images\Other\arrow-up.png" />
+	  <Resource Include="Images\Other\close.png" />
+	  <Resource Include="Images\Other\Icon.ico" />
+	</ItemGroup>
+</Project>

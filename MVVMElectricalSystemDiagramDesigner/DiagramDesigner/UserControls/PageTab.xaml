@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="DiagramDesigner.PageTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DiagramDesigner"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             d:DesignHeight="100"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <ItemsPanelTemplate x:Key="MenuItemPanelTemplate">
+            <StackPanel Margin="-20,0,0,0"
+                        Background="White" />
+        </ItemsPanelTemplate>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="ItemsPanel"
+                    Value="{StaticResource MenuItemPanelTemplate}" />
+        </Style>
+        <ContextMenu x:Key="contextMenu"
+                     DataContext="{Binding PlacementTarget.DataContext, 
+	RelativeSource={RelativeSource Self}}">
+            <ContextMenu.Style>
+                <Style TargetType="{x:Type ContextMenu}">
+                    <Setter Property="ItemsPanel">
+                        <Setter.Value>
+                            <ItemsPanelTemplate>
+                                <StackPanel Margin="-20, 0, 0, 0"
+                                            Background="White" />
+                            </ItemsPanelTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ContextMenu.Style>
+            <MenuItem Header="Copy">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label Content="hihi"
+                           Grid.Row="0" />
+                    <Label Content="haha"
+                           Grid.Row="1" />
+                </Grid>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <TextBox MinWidth="50" />
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Header="Test"
+                      Command="{Binding TestCommand}" />
+        </ContextMenu>
+    </UserControl.Resources>
+    <Border BorderBrush="LightGray"
+            BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Padding="5, 5, 5, 5"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding AddPageCommand}">
+                <Path VerticalAlignment="Center"
+                      Stroke="Black"
+                      Fill="Black"
+                      Data="M 0,5 H 10 M 5,10 V0" />
+            </Button>
+            <ItemsControl Grid.Column="1"
+                          ItemsSource="{Binding ListPage}">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ScrollViewer>
+                            <ItemsPresenter />
+
+                            <ScrollViewer.Style>
+                                <Style TargetType="ScrollViewer">
+                                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                                            Value="Hidden" />
+                                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                                            Value="Hidden" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                                                    Value="Auto" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ScrollViewer.Style>
+
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                ContextMenu="{StaticResource contextMenu}">
+                            <Grid>
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSelected}"
+                                                         Value="False">
+                                                <Setter Property="Background"
+                                                        Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         Grid.Column="0"
+                                         Padding="5"
+                                         VerticalAlignment="Center"
+                                         BorderThickness="0"
+                                         IsReadOnly="{Binding IsReadOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         ContextMenu="{StaticResource contextMenu}"
+                                         KeyDown="TextBox_KeyDown">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding DisableEditCommand}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <i:InvokeCommandAction Command="{Binding EnableEditCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsReadOnly"
+                                                         Value="True">
+                                                    <Setter Property="Foreground"
+                                                            Value="Gray" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                                <Button Grid.Column="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Padding="5, 5, 5, 5"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        ContextMenu="{StaticResource contextMenu}">
+                                    <Path VerticalAlignment="Center"
+                                          Stroke="Black"
+                                          Fill="Black"
+                                          Data="M 0,5 L 4,5 L 2,2.5 Z" />
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <EventTrigger RoutedEvent="Click">
+                                                    <EventTrigger.Actions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0"
+                                                                                             Value="True" />
+                                                                </BooleanAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger.Actions>
+                                                </EventTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Border>
+</UserControl>

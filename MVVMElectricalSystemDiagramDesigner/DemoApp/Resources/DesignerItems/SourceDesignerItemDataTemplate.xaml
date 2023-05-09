@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DemoApp">
+
+    <!-- DataTemplate for DesignerCanvas look and feel -->
+    <DataTemplate DataType="{x:Type local:SourceDesignerItemViewModel}">
+        <Grid>
+            <Image IsHitTestVisible="False"
+                   Stretch="Fill"
+                   Source="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged}"
+                   Tag="source"
+                   Height="50"
+                   Width="200" />
+            <Label HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="This is source"
+                   FontSize="16" />
+        </Grid>
+    </DataTemplate>
+    
+</ResourceDictionary>

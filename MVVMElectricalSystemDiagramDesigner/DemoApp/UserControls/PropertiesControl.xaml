@@ -1,0 +1,320 @@
+﻿<UserControl x:Class="DemoApp.PropertiesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:s="clr-namespace:DiagramDesigner;assembly=DiagramDesigner"
+             xmlns:local="clr-namespace:DemoApp"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             d:DesignHeight="1000"
+             d:DesignWidth="300">
+    <Border BorderBrush="LightGray"
+            BorderThickness="1">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Expander Grid.Row="0"
+                          Header="Properties"
+                          IsExpanded="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <!--Designer Item-->
+                        <Expander Grid.Row="0"
+                                  Header="{Binding DeviceType}"
+                                  IsExpanded="True"
+                                  Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=1}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Content="Name" />
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Content="{Binding DeviceName}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Content="Path" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Content="{Binding DevicePath}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                                <Label Grid.Column="0"
+                                       Grid.Row="2"
+                                       Content="Description" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="2"
+                                       Content="{Binding Description}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                            </Grid>
+                        </Expander>
+
+                        <Expander Grid.Row="1"
+                                  Header="Position"
+                                  IsExpanded="True"
+                                  Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=1}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0">Left</Label>
+                                <TextBox Grid.Row="0"
+                                         Grid.Column="1"
+                                         Width="80"
+                                         Margin="5"
+                                         Text="{Binding Left, UpdateSourceTrigger=PropertyChanged}" />
+                                <Label Grid.Row="1"
+                                       Grid.Column="0">Top</Label>
+                                <TextBox Grid.Row="1"
+                                         Grid.Column="1"
+                                         Width="80"
+                                         Margin="5"
+                                         Text="{Binding Top, UpdateSourceTrigger=PropertyChanged}" />
+                                <Label Grid.Row="2"
+                                       Grid.Column="0">Width</Label>
+                                <TextBox Grid.Row="2"
+                                         Grid.Column="1"
+                                         Width="80"
+                                         Margin="5"
+                                         Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}" />
+                                <Label Grid.Row="3"
+                                       Grid.Column="0">Height</Label>
+                                <TextBox Grid.Row="3"
+                                         Grid.Column="1"
+                                         Width="80"
+                                         Margin="5"
+                                         Text="{Binding Height, UpdateSourceTrigger=PropertyChanged}" />
+                                <Label Grid.Row="4"
+                                       Grid.Column="0">Rotation</Label>
+                                <ComboBox   Grid.Row="4"
+                                            Grid.Column="1"
+                                            Width="80"
+                                            Margin="5"
+                                            SelectedItem="{Binding Rotation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
+                                    <ComboBox.ItemsSource>
+                                        <x:Array Type="{x:Type sys:Int32}">
+                                            <sys:Int32>0</sys:Int32>
+                                            <sys:Int32>90</sys:Int32>
+                                            <sys:Int32>180</sys:Int32>
+                                            <sys:Int32>270</sys:Int32>
+                                        </x:Array>
+                                    </ComboBox.ItemsSource>
+                                </ComboBox>
+                                
+                            </Grid>
+                        </Expander>
+
+                        <Expander Grid.Row="2"
+                                  Header="Label"
+                                  IsExpanded="True"
+                                  Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=1}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0">Label Size</Label>
+                                <TextBox Grid.Row="0"
+                                         Grid.Column="1"
+                                         Width="80"
+                                         Margin="5"
+                                         Text="{Binding LabelSize, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0">Switch Position</Label>
+                                <Grid Grid.Row="1"
+                                      Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0"
+                                            Margin="5"
+                                            Height="20"
+                                            Background="Transparent"
+                                            BorderThickness="0">
+                                        <Image Source="pack://application:,,,/DemoApp;component/Images/Other/arrow-down.png" />
+                                    </Button>
+                                    <Button Grid.Column="1"
+                                            Margin="5"
+                                            Height="20"
+                                            Background="Transparent"
+                                            BorderThickness="0">
+                                        <Image Source="pack://application:,,,/DemoApp;component/Images/Other/arrow-right.png" />
+                                    </Button>
+                                    <Button Grid.Column="2"
+                                            Margin="5"
+                                            Height="20"
+                                            Background="Transparent"
+                                            BorderThickness="0">
+                                        <Image Source="pack://application:,,,/DemoApp;component/Images/Other/arrow-up.png" />
+                                    </Button>
+                                    <Button Grid.Column="3"
+                                            Margin="5"
+                                            Height="20"
+                                            Background="Transparent"
+                                            BorderThickness="0">
+                                        <Image Source="pack://application:,,,/DemoApp;component/Images/Other/arrow-left.png" />
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Expander>
+
+                        <!--Connection-->
+                        <Expander Grid.Row="3"
+                                  IsExpanded="True"
+                                  Header="Source Connector Information"
+                                  Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=2}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Content="Source" />
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Content="{Binding SourcePath}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Content="Orientation" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Content="{Binding SourceOrientation}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                            </Grid>
+                        </Expander>
+
+                        <Expander Grid.Row="4"
+                                  IsExpanded="True"
+                                  Header="Sink Connector Information"
+                                  Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=2}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Content="Sink" />
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Content="{Binding SinkPath}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Content="Orientation" />
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Content="{Binding SinkOrientation}"
+                                       HorizontalAlignment="Right"
+                                       Margin="0, 0, 5, 0" />
+                            </Grid>
+                        </Expander>
+
+                        <!--Many Select-->
+                        <Grid Grid.Row="5"
+                              Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=3}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Content="Number of selected items" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Content="{Binding Number}"
+                                   HorizontalAlignment="Right"
+                                   Margin="0, 0, 5, 0" />
+                            <Label Grid.Column="0"
+                                   Grid.Row="1"
+                                   Content="Number of type of selected items" />
+                            <Label Grid.Column="1"
+                                   Grid.Row="1"
+                                   Content="{Binding NumberOfType}"
+                                   HorizontalAlignment="Right"
+                                   Margin="0, 0, 5, 0" />
+                        </Grid>
+                    </Grid>
+                </Expander>
+
+                <Button Grid.Row="1"
+                        Content="{Binding MappingContent}"
+                        Margin="20"
+                        Width="80"
+                        Height="30"
+                        Background="{Binding MappingColor}"
+                        BorderThickness="0"
+                        Command="{Binding MappingCommand}"
+                        ToolTip="Import data before mapping"
+                        ToolTipService.ShowOnDisabled="True"
+                        IsEnabled="{Binding IsImported}"
+                        Visibility="{Binding PropertyType, Converter={x:Static s:PropertyTypeToVisibilityConverter.Instance},ConverterParameter=1}">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius"
+                                    Value="7" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>
